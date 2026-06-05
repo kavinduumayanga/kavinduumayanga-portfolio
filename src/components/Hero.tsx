@@ -82,27 +82,25 @@ export function Hero() {
             duration: 1,
             delay: 0.4
           }}
-          className="relative h-[600px] flex justify-center items-end lg:items-center mt-12 lg:mt-0">
-
-          {/* Ambient accent glow behind portrait */}
-          <div
-            aria-hidden="true"
-            className="absolute z-0 h-[28rem] w-[28rem] rounded-full blur-3xl md:h-[34rem] md:w-[34rem]"
-            style={{
-              background:
-                'radial-gradient(circle at 50% 38%, rgba(59,130,246,0.14) 0%, rgba(15,23,42,0.22) 34%, rgba(5,5,5,0.82) 68%, rgba(5,5,5,0) 100%)'
-            }} />
+          className="relative h-[500px] md:h-[600px] lg:h-[620px] flex justify-center items-end lg:items-center lg:justify-end mt-12 lg:mt-0 w-full">
 
           {/* Portrait Image */}
           <motion.div
-            className="relative z-10 flex h-[24rem] w-[21rem] items-end justify-end md:h-[30rem] md:w-[27rem] lg:h-[34rem] lg:w-[30rem]">
+            className="relative z-10 flex h-[24rem] w-[21rem] items-end justify-center md:h-[30rem] md:w-[27rem] lg:h-[34rem] lg:w-[30rem] lg:-translate-y-16">
+            
+            {/* Ambient subtle white glow behind head/shoulders */}
+            <div
+              aria-hidden="true"
+              className="absolute top-[15%] z-0 h-[14rem] w-[14rem] rounded-full bg-white/5 blur-[70px] md:h-[18rem] md:w-[18rem]" />
+
             <img
               src="/assets/me-bg-removed.png"
               alt="Kavindu Umayanga"
-              className="absolute inset-0 h-full w-full object-contain object-bottom" />
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-black to-transparent pointer-events-none" />
+              className="relative z-10 h-full w-full object-contain object-bottom"
+              style={{
+                WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+                maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
+              }} />
           </motion.div>
         </motion.div>
       </div>
