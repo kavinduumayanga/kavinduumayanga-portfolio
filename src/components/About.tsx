@@ -1,37 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Code, Cloud, Target, Rocket } from 'lucide-react';
-export function About() {
-  const stats = [
+import { GraduationCap, Award, Users, Cloud } from 'lucide-react';
+
+const HIGHLIGHTS = [
   {
-    icon: <Code className="w-6 h-6 text-blue-400" />,
-    title: 'Experience',
-    value: '2+ Years',
-    desc: 'in DevOps & Cloud',
+    icon: <GraduationCap className="w-6 h-6 text-blue-400" />,
+    title: 'SLIIT Undergraduate',
+    desc: 'Pursuing a degree in Information Technology at the Sri Lanka Institute of Information Technology.',
     glow: 'group-hover:shadow-[0_0_30px_rgba(96,165,250,0.15)]'
   },
   {
-    icon: <Cloud className="w-6 h-6 text-purple-400" />,
-    title: 'Projects',
-    value: '15+',
-    desc: 'Completed',
+    icon: <Award className="w-6 h-6 text-purple-400" />,
+    title: 'Microsoft Learn Student Ambassador',
+    desc: 'Beta-level ambassador empowering peers through Microsoft technologies, workshops, and events.',
     glow: 'group-hover:shadow-[0_0_30px_rgba(192,132,252,0.15)]'
   },
   {
-    icon: <Rocket className="w-6 h-6 text-orange-400" />,
-    title: 'Focus',
-    value: 'Automation',
-    desc: 'Scalability & Reliability',
+    icon: <Users className="w-6 h-6 text-orange-400" />,
+    title: 'Community Lead',
+    desc: 'Leading the Microsoft IT Pro Community — organising sessions, mentoring students, and building networks.',
     glow: 'group-hover:shadow-[0_0_30px_rgba(251,146,60,0.15)]'
   },
   {
-    icon: <Target className="w-6 h-6 text-green-400" />,
-    title: 'Goal',
-    value: 'Deliver',
-    desc: 'Impactful Solutions',
+    icon: <Cloud className="w-6 h-6 text-green-400" />,
+    title: 'Cloud & DevOps Enthusiast',
+    desc: 'Passionate about CI/CD, infrastructure automation, and deploying scalable cloud-native solutions.',
     glow: 'group-hover:shadow-[0_0_30px_rgba(74,222,128,0.15)]'
-  }];
+  }
+];
 
+export function About() {
   return (
     <section id="about" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -60,24 +58,20 @@ export function About() {
             </h2>
             <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
               <p>
-                I&apos;m a DevOps Engineer and Cloud enthusiast with a strong
-                background in automating infrastructure, building CI/CD
-                pipelines and deploying scalable applications on the cloud.
+                I&apos;m Kavindu Umayanga — an IT undergraduate at SLIIT,
+                Microsoft Learn Student Ambassador, and a community-driven
+                technologist focused on Cloud, DevOps, and AI.
               </p>
               <p>
-                I love solving real-world problems, optimizing systems and
-                making deployments reliable, faster and smarter.
+                I lead sessions, mentor students, and build scalable solutions
+                that make real-world impact.
               </p>
             </div>
-            <button className="mt-4 flex items-center gap-2 px-6 py-3 glass-panel glass-panel-hover rounded-full font-medium text-white group">
-              More About Me
-              <User className="w-4 h-4 group-hover:text-gray-300" />
-            </button>
           </motion.div>
 
           {/* Right Grid */}
           <div className="grid sm:grid-cols-2 gap-4">
-            {stats.map((stat, index) =>
+            {HIGHLIGHTS.map((item, index) =>
             <motion.div
               key={index}
               initial={false}
@@ -92,18 +86,15 @@ export function About() {
                 duration: 0.6,
                 delay: index * 0.1
               }}
-              className={`glass-panel p-8 rounded-3xl glass-panel-hover group transition-all duration-500 ${stat.glow}`}>
+              className={`glass-panel p-8 rounded-3xl glass-panel-hover group transition-all duration-500 ${item.glow}`}>
               
                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {stat.icon}
+                  {item.icon}
                 </div>
-                <h3 className="text-gray-400 text-sm font-medium mb-2">
-                  {stat.title}
+                <h3 className="text-lg font-heading font-bold text-white mb-2">
+                  {item.title}
                 </h3>
-                <div className="text-2xl font-heading font-bold text-white mb-1">
-                  {stat.value}
-                </div>
-                <p className="text-sm text-gray-500">{stat.desc}</p>
+                <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
               </motion.div>
             )}
           </div>
@@ -112,3 +103,4 @@ export function About() {
     </section>);
 
 }
+
