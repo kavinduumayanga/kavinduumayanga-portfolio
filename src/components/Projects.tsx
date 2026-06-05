@@ -1,28 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { LayoutGrid, Infinity, Layers, Bell } from 'lucide-react';
+import { LayoutGrid, BookOpen, Globe, Activity } from 'lucide-react';
 export function Projects() {
   const projects = [
   {
-    icon: <Infinity className="w-6 h-6 text-blue-400" />,
-    title: 'CI/CD Pipeline Automation',
-    desc: 'End-to-end CI/CD pipeline using Jenkins, Docker, Kubernetes and AWS.',
-    tags: ['Jenkins', 'Docker', 'Kubernetes', 'AWS'],
-    glow: 'group-hover:shadow-[0_0_30px_rgba(96,165,250,0.1)]'
+    icon: <BookOpen className="w-6 h-6 text-blue-400" />,
+    title: 'TutorSphere',
+    desc: 'An AI-powered tutor booking and learning system that connects students with qualified tutors. Features intelligent scheduling, personalised learning recommendations, and automated deployment pipelines.',
+    tags: ['MERN', 'Azure', 'OpenAI', 'GitHub Actions'],
+    glow: 'group-hover:shadow-[0_0_30px_rgba(96,165,250,0.1)]',
+    image: '/assets/projects/tutorsphere.jpg',
+    gradient: 'from-blue-500/20 to-cyan-500/20'
   },
   {
-    icon: <Layers className="w-6 h-6 text-purple-400" />,
-    title: 'Infrastructure as Code',
-    desc: 'Automated cloud infrastructure provisioning using Terraform and AWS.',
-    tags: ['Terraform', 'AWS', 'S3', 'EC2'],
-    glow: 'group-hover:shadow-[0_0_30px_rgba(192,132,252,0.1)]'
+    icon: <Globe className="w-6 h-6 text-purple-400" />,
+    title: 'Global Azure Sri Lanka',
+    desc: 'Official event platform for Global Azure Sri Lanka — handling speaker submissions, session scheduling, attendee registration, and automated event communications.',
+    tags: ['React', 'Supabase', 'Power Automate', 'Sessionize'],
+    glow: 'group-hover:shadow-[0_0_30px_rgba(192,132,252,0.1)]',
+    image: '/assets/projects/global-azure.jpg',
+    gradient: 'from-purple-500/20 to-pink-500/20'
   },
   {
-    icon: <Bell className="w-6 h-6 text-orange-400" />,
-    title: 'Monitoring & Alerting System',
-    desc: 'Centralized monitoring and alerting with Prometheus, Grafana and Alertmanager.',
-    tags: ['Prometheus', 'Grafana', 'Alertmanager'],
-    glow: 'group-hover:shadow-[0_0_30px_rgba(251,146,60,0.1)]'
+    icon: <Activity className="w-6 h-6 text-green-400" />,
+    title: 'Military Soldier Health Monitoring System',
+    desc: 'A real-time IoT-based health monitoring system for military personnel. Tracks vital signs, GPS location, and environmental conditions with remote dashboard visibility.',
+    tags: ['ESP32', 'IoT', 'Arduino', 'GPS', 'Blynk'],
+    glow: 'group-hover:shadow-[0_0_30px_rgba(74,222,128,0.1)]',
+    image: '/assets/projects/health-monitor.jpg',
+    gradient: 'from-green-500/20 to-emerald-500/20'
   }];
 
   return (
@@ -80,8 +86,23 @@ export function Projects() {
               duration: 0.5,
               delay: index * 0.1
             }}
-            className={`glass-panel p-8 rounded-3xl glass-panel-hover group flex flex-col h-full transition-all duration-500 ${project.glow}`}>
-            
+            className={`glass-panel rounded-3xl glass-panel-hover group flex flex-col h-full transition-all duration-500 overflow-hidden ${project.glow}`}>
+
+              {/* Banner Image */}
+              <div className="relative h-44 overflow-hidden bg-white/[0.02]">
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} z-10`} />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </div>
+
+              <div className="p-8 flex flex-col flex-grow">
               <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 {project.icon}
               </div>
@@ -100,6 +121,7 @@ export function Projects() {
                     {tag}
                   </span>
               )}
+              </div>
               </div>
             </motion.div>
           )}
