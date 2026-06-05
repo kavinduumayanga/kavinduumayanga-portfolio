@@ -1,5 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
   Github,
@@ -7,7 +9,23 @@ import {
   Mail,
   LayoutGrid
 } from 'lucide-react';
+
+const HERO_ROLES = [
+  'Aspiring DevOps Engineer',
+  'Microsoft Student Ambassador',
+  'Undergraduate @SLIIT'
+];
+
 export function Hero() {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prev) => (prev + 1) % HERO_ROLES.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
@@ -27,7 +45,7 @@ export function Hero() {
           }}
           className="flex flex-col items-start gap-6 pt-12 lg:pt-0">
 
-          <div className="flex items-center gap-3 text-sm font-medium tracking-widest text-gray-400 uppercase">
+          <div className="flex items-center gap-3 text-base md:text-lg font-medium tracking-widest text-gray-400 uppercase">
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
             Hi, I&apos;m
           </div>
@@ -37,9 +55,24 @@ export function Hero() {
             <span className="text-gradient">UMAYANGA</span>
           </h1>
 
-          <h2 className="text-xl md:text-2xl font-light text-gray-300 border-l-2 border-white/20 pl-4">
-            DevOps Engineer <span className="text-white/20 mx-2">|</span> Cloud
-            Enthusiast <span className="text-white/20 mx-2">|</span> Developer
+          <h2 className="flex min-h-[3.5rem] max-w-xl items-center text-lg font-light leading-tight text-gray-300 sm:min-h-[3rem] sm:text-xl md:min-h-[2.75rem] md:text-2xl">
+            <span className="mr-3 flex min-h-[3.5rem] items-center font-mono font-medium text-white sm:min-h-[3rem] md:min-h-[2.75rem]">
+              &gt;
+            </span>
+            <span className="relative flex min-h-[3.5rem] items-center overflow-hidden sm:min-h-[3rem] md:min-h-[2.75rem]">
+              <AnimatePresence mode="wait">
+              <motion.span
+                key={currentRoleIndex}
+                initial={{ opacity: 0, y: 12, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -12, filter: 'blur(6px)' }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className="block"
+              >
+                {HERO_ROLES[currentRoleIndex]}
+              </motion.span>
+              </AnimatePresence>
+            </span>
           </h2>
 
           <p className="text-gray-400 text-lg max-w-lg leading-relaxed">
