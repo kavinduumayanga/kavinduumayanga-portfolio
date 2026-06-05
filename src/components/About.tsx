@@ -40,7 +40,7 @@ function AnimatedCounter({ value, suffix, duration = 2000 }: { value: number; su
 
 export function About() {
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-24 relative scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Text */}

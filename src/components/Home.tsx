@@ -24,11 +24,11 @@ export function Home() {
         <About />
         <Journey />
         <Services />
-        <TechStack />
         <Community />
         <Projects />
         <Experience />
         <Certifications />
+        <TechStack />
         <Recommendations />
         <Contact />
       </main>

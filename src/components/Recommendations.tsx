@@ -17,7 +17,7 @@ const RECOMMENDATIONS = [
 
 export function Recommendations() {
   return (
-    <section id="recommendations" className="py-24 relative">
+    <section id="recommendations" className="py-24 relative scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div

@@ -23,7 +23,7 @@ export function Services() {
   }];
 
   return (
-    <section id="services" className="py-24 relative">
+    <section id="services" className="py-24 relative scroll-mt-28">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={false}

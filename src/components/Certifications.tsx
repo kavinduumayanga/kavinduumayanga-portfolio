@@ -87,7 +87,7 @@ export function Certifications() {
 
   return (
     <>
-      <section id="certifications" className="py-24 relative">
+      <section id="certifications" className="py-24 relative scroll-mt-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Header */}
           <motion.div
@@ -135,6 +135,7 @@ export function Certifications() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-md px-4"
+            role="presentation"
             onClick={() => setModalOpen(false)}
           >
             <motion.div
@@ -143,20 +144,28 @@ export function Certifications() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="certifications-dialog-title"
+              aria-describedby="certifications-dialog-description"
               className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-3xl glass-panel border border-white/10 p-8 md:p-12"
             >
               {/* Close Button */}
               <button
                 onClick={() => setModalOpen(false)}
                 className="absolute top-5 right-5 p-2 rounded-full glass-panel glass-panel-hover text-gray-400 hover:text-white transition-colors"
+                aria-label="Close certifications dialog"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-2">
+              <h3
+                id="certifications-dialog-title"
+                className="text-2xl md:text-3xl font-heading font-bold text-white mb-2"
+              >
                 All Certifications
               </h3>
-              <p className="text-gray-400 mb-8">
+              <p id="certifications-dialog-description" className="text-gray-400 mb-8">
                 A complete list of my professional certifications and credentials.
               </p>
 

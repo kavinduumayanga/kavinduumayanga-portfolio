@@ -67,7 +67,7 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 glass-panel border-b-0' : 'py-6 bg-transparent'}`}>
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
+        <a href="#home" className="flex items-center gap-2 group">
           <Code2 className="w-6 h-6 text-white group-hover:text-gray-300 transition-colors" />
           <span className="font-heading font-bold text-lg tracking-wider text-white">
             KAVINDU UMAYANGA
@@ -97,7 +97,10 @@ export function Navbar() {
         {/* Mobile Toggle */}
         <button
           className="lg:hidden text-white p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation-menu">
           
           {mobileMenuOpen ?
           <X className="w-6 h-6" /> :
@@ -109,7 +112,9 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen &&
-      <div className="lg:hidden absolute top-full left-0 w-full glass-panel border-t border-white/10 py-4 px-6 flex flex-col gap-4">
+      <div
+        id="mobile-navigation-menu"
+        className="lg:hidden absolute top-full left-0 w-full glass-panel border-t border-white/10 py-4 px-6 flex flex-col gap-4">
           {NAV_LINKS.map((link) => (
         <a
           key={link.href}
@@ -125,4 +130,3 @@ export function Navbar() {
     </motion.nav>);
 
 }
-

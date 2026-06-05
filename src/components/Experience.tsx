@@ -47,7 +47,7 @@ const EXPERIENCE = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="experience" className="py-24 relative scroll-mt-28">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         {/* Header */}
         <motion.div

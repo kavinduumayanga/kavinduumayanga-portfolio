@@ -42,7 +42,7 @@ export function TechStack() {
   return (
     <section
       id="skills"
-      className="py-24 relative border-y border-white/5 bg-white/[0.01]">
+      className="py-24 relative border-y border-white/5 bg-white/[0.01] scroll-mt-28">
       
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
