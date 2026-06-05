@@ -4,6 +4,7 @@ import React from 'react';
 import { Navbar } from './Navbar';
 import { Hero } from './Hero';
 import { About } from './About';
+import { Journey } from './Journey';
 import { Services } from './Services';
 import { TechStack } from './TechStack';
 import { Ambassador } from './Ambassador';
@@ -18,6 +19,7 @@ export function Home() {
       <main>
         <Hero />
         <About />
+        <Journey />
         <Services />
         <TechStack />
         <Ambassador />
