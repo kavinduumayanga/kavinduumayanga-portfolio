@@ -102,13 +102,7 @@ export function Hero() {
               className="absolute inset-0 h-full w-full object-contain object-bottom" />
             <div
               aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black via-black/90 to-transparent pointer-events-none" />
-            <div
-              aria-hidden="true"
-              className="absolute left-0 top-[10%] h-[76%] w-20 bg-gradient-to-r from-[#050505] via-[#050505]/90 to-transparent pointer-events-none md:w-24" />
-            <div
-              aria-hidden="true"
-              className="absolute right-0 top-[12%] h-[74%] w-16 bg-gradient-to-l from-[#050505]/85 via-[#050505]/45 to-transparent pointer-events-none md:w-20" />
+              className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-black to-transparent pointer-events-none" />
           </motion.div>
         </motion.div>
       </div>
