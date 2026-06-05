@@ -7,7 +7,7 @@ import { About } from './About';
 import { Journey } from './Journey';
 import { Services } from './Services';
 import { TechStack } from './TechStack';
-import { Ambassador } from './Ambassador';
+import { Community } from './Community';
 import { Projects } from './Projects';
 import { Contact } from './Contact';
 import { Footer } from './Footer';
@@ -22,7 +22,7 @@ export function Home() {
         <Journey />
         <Services />
         <TechStack />
-        <Ambassador />
+        <Community />
         <Projects />
         <Contact />
       </main>
