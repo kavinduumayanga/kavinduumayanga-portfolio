@@ -9,6 +9,7 @@ import { Services } from './Services';
 import { TechStack } from './TechStack';
 import { Community } from './Community';
 import { Projects } from './Projects';
+import { Experience } from './Experience';
 import { Contact } from './Contact';
 import { Footer } from './Footer';
 
@@ -24,6 +25,7 @@ export function Home() {
         <TechStack />
         <Community />
         <Projects />
+        <Experience />
         <Contact />
       </main>
       <Footer />
