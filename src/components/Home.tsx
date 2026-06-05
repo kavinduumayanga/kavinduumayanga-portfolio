@@ -11,6 +11,7 @@ import { Community } from './Community';
 import { Projects } from './Projects';
 import { Experience } from './Experience';
 import { Certifications } from './Certifications';
+import { Recommendations } from './Recommendations';
 import { Contact } from './Contact';
 import { Footer } from './Footer';
 
@@ -28,6 +29,7 @@ export function Home() {
         <Projects />
         <Experience />
         <Certifications />
+        <Recommendations />
         <Contact />
       </main>
       <Footer />

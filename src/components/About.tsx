@@ -1,33 +1,42 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { GraduationCap, Award, Users, Cloud } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-const HIGHLIGHTS = [
-  {
-    icon: <GraduationCap className="w-6 h-6 text-blue-400" />,
-    title: 'SLIIT Undergraduate',
-    desc: 'Pursuing a degree in Information Technology at the Sri Lanka Institute of Information Technology.',
-    glow: 'group-hover:shadow-[0_0_30px_rgba(96,165,250,0.15)]'
-  },
-  {
-    icon: <Award className="w-6 h-6 text-purple-400" />,
-    title: 'Microsoft Learn Student Ambassador',
-    desc: 'Beta-level ambassador empowering peers through Microsoft technologies, workshops, and events.',
-    glow: 'group-hover:shadow-[0_0_30px_rgba(192,132,252,0.15)]'
-  },
-  {
-    icon: <Users className="w-6 h-6 text-orange-400" />,
-    title: 'Community Lead',
-    desc: 'Leading the Microsoft IT Pro Community — organising sessions, mentoring students, and building networks.',
-    glow: 'group-hover:shadow-[0_0_30px_rgba(251,146,60,0.15)]'
-  },
-  {
-    icon: <Cloud className="w-6 h-6 text-green-400" />,
-    title: 'Cloud & DevOps Enthusiast',
-    desc: 'Passionate about CI/CD, infrastructure automation, and deploying scalable cloud-native solutions.',
-    glow: 'group-hover:shadow-[0_0_30px_rgba(74,222,128,0.15)]'
-  }
+const STATS = [
+  { value: 30, suffix: '+', label: 'Certifications', accent: 'bg-blue-400' },
+  { value: 10, suffix: '+', label: 'Sessions Delivered', accent: 'bg-purple-400' },
+  { value: 10, suffix: '+', label: 'Projects', accent: 'bg-orange-400' },
+  { value: 3000, suffix: '+', label: 'LinkedIn Followers', accent: 'bg-green-400' },
 ];
+
+function AnimatedCounter({ value, suffix, duration = 2000 }: { value: number; suffix: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let start = 0;
+    const increment = value / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [isInView, value, duration]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
 
 export function About() {
   return (
@@ -37,18 +46,11 @@ export function About() {
           {/* Left Text */}
           <motion.div
             initial={false}
-            whileInView={{
-              opacity: 1,
-              y: 0
-            }}
-            viewport={{
-              once: true
-            }}
-            transition={{
-              duration: 0.6
-            }}
-            className="flex flex-col items-start gap-6">
-            
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-start gap-6"
+          >
             <div className="flex items-center gap-3 text-sm font-medium tracking-widest text-gray-400 uppercase">
               <span className="w-2 h-2 rounded-full bg-white" />
               About Me
@@ -69,38 +71,28 @@ export function About() {
             </div>
           </motion.div>
 
-          {/* Right Grid */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {HIGHLIGHTS.map((item, index) =>
-            <motion.div
-              key={index}
-              initial={false}
-              whileInView={{
-                opacity: 1,
-                y: 0
-              }}
-              viewport={{
-                once: true
-              }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1
-              }}
-              className={`glass-panel p-8 rounded-3xl glass-panel-hover group transition-all duration-500 ${item.glow}`}>
-              
-                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </div>
-                <h3 className="text-lg font-heading font-bold text-white mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+          {/* Right — Stats Grid */}
+          <div className="grid grid-cols-2 gap-5 md:gap-6 max-w-[26rem] md:max-w-md mx-auto lg:ml-auto lg:mr-0 w-full">
+            {STATS.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative glass-panel py-8 px-5 md:py-10 md:px-6 rounded-3xl overflow-hidden group text-center transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.04)] flex flex-col justify-center"
+              >
+                <span className="block text-2xl md:text-3xl font-heading font-bold text-white">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </span>
+                <p className="text-xs md:text-sm text-gray-500 mt-3 font-medium uppercase tracking-wider">
+                  {stat.label}
+                </p>
               </motion.div>
-            )}
+            ))}
           </div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }
-
