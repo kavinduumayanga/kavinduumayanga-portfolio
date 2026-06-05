@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   ArrowRight,
   Github,
@@ -16,6 +16,43 @@ const HERO_ROLES = [
   'Undergraduate @SLIIT',
   'Community Lead - Microsoft IT Pro Community'
 ];
+
+const STATS = [
+  { value: 30, suffix: '+', label: 'Certifications' },
+  { value: 10, suffix: '+', label: 'Sessions' },
+  { value: 500, suffix: '+', label: 'Students Reached' },
+  { value: 3000, suffix: '+', label: 'Followers' },
+];
+
+function AnimatedCounter({ value, suffix, duration = 2000 }: { value: number; suffix: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let start = 0;
+    const increment = value / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [isInView, value, duration]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
 
 export function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -56,25 +93,27 @@ export function Hero() {
             <span className="text-gradient">UMAYANGA</span>
           </h1>
 
-          <h2 className="flex min-h-[3.5rem] max-w-xl items-center text-lg font-light leading-tight text-gray-300 sm:min-h-[3rem] sm:text-xl md:min-h-[2.75rem] md:text-2xl">
-            <span className="mr-3 flex min-h-[3.5rem] items-center font-mono font-medium text-white sm:min-h-[3rem] md:min-h-[2.75rem]">
-              &gt;
-            </span>
-            <span className="relative flex min-h-[3.5rem] items-center overflow-hidden sm:min-h-[3rem] md:min-h-[2.75rem]">
-              <AnimatePresence mode="wait">
-              <motion.span
-                key={currentRoleIndex}
-                initial={{ opacity: 0, y: 12, filter: 'blur(6px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, y: -12, filter: 'blur(6px)' }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
-                className="block"
-              >
-                {HERO_ROLES[currentRoleIndex]}
-              </motion.span>
-              </AnimatePresence>
-            </span>
-          </h2>
+          <div className="space-y-3">
+            <h2 className="flex min-h-[3.5rem] max-w-xl items-center text-lg font-light leading-tight text-gray-300 sm:min-h-[3rem] sm:text-xl md:min-h-[2.75rem] md:text-2xl">
+              <span className="mr-3 flex min-h-[3.5rem] items-center font-mono font-medium text-white sm:min-h-[3rem] md:min-h-[2.75rem]">
+                &gt;
+              </span>
+              <span className="relative flex min-h-[3.5rem] items-center overflow-hidden sm:min-h-[3rem] md:min-h-[2.75rem]">
+                <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentRoleIndex}
+                  initial={{ opacity: 0, y: 12, filter: 'blur(6px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -12, filter: 'blur(6px)' }}
+                  transition={{ duration: 0.45, ease: 'easeOut' }}
+                  className="block"
+                >
+                  {HERO_ROLES[currentRoleIndex]}
+                </motion.span>
+                </AnimatePresence>
+              </span>
+            </h2>
+          </div>
 
           <p className="text-gray-400 text-lg max-w-lg leading-relaxed">
             I build, automate and deploy scalable cloud-native solutions that
@@ -92,7 +131,25 @@ export function Hero() {
             </button>
           </div>
 
-          <div className="flex items-center gap-6 mt-8">
+          {/* Stats Row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-6 w-full">
+            {STATS.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+                className="flex flex-col"
+              >
+                <span className="text-2xl md:text-3xl font-heading font-bold text-white">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </span>
+                <span className="text-xs md:text-sm text-gray-500 mt-1">{stat.label}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-6 mt-4">
             {[Github, Linkedin, Mail].map((Icon, i) =>
               <a
                 key={i}
