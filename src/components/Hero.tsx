@@ -17,10 +17,6 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       
-      {/* Background Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] mix-blend-screen" />
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
         {/* Left Content */}
         <motion.div
@@ -136,7 +132,7 @@ export function Hero() {
             <div className="absolute inset-0 rounded-full p-[3px] glass-panel shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7),0_0_50px_-10px_rgba(59,130,246,0.25)]">
               <div className="relative w-full h-full rounded-full overflow-hidden border border-white/10">
                 <img
-                  src="/1775485705888.jpg"
+                  src="/assets/me-bg-removed.png"
                   alt="Kavindu Umayanga"
                   className="w-full h-full object-cover scale-105" />
                 
