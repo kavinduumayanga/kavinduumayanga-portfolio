@@ -8,6 +8,7 @@ import { Services } from './Services';
 import { TechStack } from './TechStack';
 import { Ambassador } from './Ambassador';
 import { Projects } from './Projects';
+import { Contact } from './Contact';
 import { Footer } from './Footer';
 
 export function Home() {
@@ -21,6 +22,7 @@ export function Home() {
         <TechStack />
         <Ambassador />
         <Projects />
+        <Contact />
       </main>
       <Footer />
     </div>

@@ -10,6 +10,8 @@ node_modules/
 
 # Next.js / framework output
 .next/
+.next-dev/
+.next-prod/
 .vercel/
 out/
 build/

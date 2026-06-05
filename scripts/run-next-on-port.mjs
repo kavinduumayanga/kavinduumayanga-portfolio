@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const FIXED_PORT = 3000;
+const DEV_DIST_DIR = '.next-dev';
 const command = process.argv[2];
 const extraArgs = process.argv.slice(3);
 const validCommands = new Set(['dev', 'start']);
@@ -91,7 +92,7 @@ try {
 }
 
 if (command === 'dev') {
-  fs.rmSync(path.join(repoRoot, '.next'), { recursive: true, force: true });
+  fs.rmSync(path.join(repoRoot, DEV_DIST_DIR), { recursive: true, force: true });
 }
 
 const child = spawn(
