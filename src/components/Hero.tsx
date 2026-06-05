@@ -12,8 +12,9 @@ import {
 
 const HERO_ROLES = [
   'Aspiring DevOps Engineer',
-  'Microsoft Student Ambassador',
-  'Undergraduate @SLIIT'
+  'Senior Microsoft Student Ambassador',
+  'Undergraduate @SLIIT',
+  'Community Lead - Microsoft IT Pro Community'
 ];
 
 export function Hero() {
