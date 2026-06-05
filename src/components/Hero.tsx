@@ -86,7 +86,7 @@ export function Hero() {
 
           {/* Portrait Image */}
           <motion.div
-            className="relative z-10 flex h-[24rem] w-[21rem] items-end justify-center md:h-[30rem] md:w-[27rem] lg:h-[34rem] lg:w-[30rem] lg:-translate-y-16">
+            className="relative z-10 flex h-[24rem] w-[21rem] items-end justify-center md:h-[30rem] md:w-[27rem] lg:h-[34rem] lg:w-[30rem] lg:-translate-y-20">
             
             {/* Ambient subtle white glow behind head/shoulders */}
             <div
@@ -96,7 +96,7 @@ export function Hero() {
             <img
               src="/assets/me-bg-removed.png"
               alt="Kavindu Umayanga"
-              className="relative z-10 h-full w-full object-contain object-bottom"
+              className="relative z-10 h-full w-full object-contain object-bottom drop-shadow-[0_0_15px_rgba(5,5,5,0.8)]"
               style={{
                 WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
                 maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
