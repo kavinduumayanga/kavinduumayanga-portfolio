@@ -30,10 +30,7 @@ export function Projects() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20
-            }}
+            initial={false}
             whileInView={{
               opacity: 1,
               y: 0
@@ -47,15 +44,12 @@ export function Projects() {
               Featured Projects
             </div>
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">
-              Some Things I've Built
+              Some Things I&apos;ve Built
             </h2>
           </motion.div>
 
           <motion.button
-            initial={{
-              opacity: 0,
-              x: 20
-            }}
+            initial={false}
             whileInView={{
               opacity: 1,
               x: 0
@@ -74,10 +68,7 @@ export function Projects() {
           {projects.map((project, index) =>
           <motion.div
             key={index}
-            initial={{
-              opacity: 0,
-              y: 30
-            }}
+            initial={false}
             whileInView={{
               opacity: 1,
               y: 0

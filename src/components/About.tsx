@@ -38,10 +38,7 @@ export function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Text */}
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 30
-            }}
+            initial={false}
             whileInView={{
               opacity: 1,
               y: 0
@@ -63,7 +60,7 @@ export function About() {
             </h2>
             <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
               <p>
-                I'm a DevOps Engineer and Cloud enthusiast with a strong
+                I&apos;m a DevOps Engineer and Cloud enthusiast with a strong
                 background in automating infrastructure, building CI/CD
                 pipelines and deploying scalable applications on the cloud.
               </p>
@@ -83,10 +80,7 @@ export function About() {
             {stats.map((stat, index) =>
             <motion.div
               key={index}
-              initial={{
-                opacity: 0,
-                y: 30
-              }}
+              initial={false}
               whileInView={{
                 opacity: 1,
                 y: 0

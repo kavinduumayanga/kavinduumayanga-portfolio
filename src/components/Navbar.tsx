@@ -19,9 +19,7 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{
-        y: -100
-      }}
+      initial={false}
       animate={{
         y: 0
       }}

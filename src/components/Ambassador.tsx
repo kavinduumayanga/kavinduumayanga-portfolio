@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Users, Video, ExternalLink } from 'lucide-react';
+import { Calendar, Users, Video } from 'lucide-react';
 export function Ambassador() {
   const sessions = [
   {
@@ -39,10 +39,7 @@ export function Ambassador() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20
-            }}
+            initial={false}
             whileInView={{
               opacity: 1,
               y: 0
@@ -60,7 +57,7 @@ export function Ambassador() {
             </h2>
             <p className="text-gray-400 mt-4 max-w-2xl">
               Empowering students through technology. Here are some of the
-              sessions and workshops I've hosted to share knowledge about Cloud
+              sessions and workshops I&apos;ve hosted to share knowledge about Cloud
               and DevOps.
             </p>
           </motion.div>
@@ -70,10 +67,7 @@ export function Ambassador() {
           {sessions.map((session, index) =>
           <motion.div
             key={index}
-            initial={{
-              opacity: 0,
-              y: 30
-            }}
+            initial={false}
             whileInView={{
               opacity: 1,
               y: 0
