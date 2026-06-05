@@ -103,8 +103,7 @@ export function Contact() {
                 Send a Message
               </h3>
               <p className="text-sm leading-relaxed text-gray-400">
-                Fill out the form below and your default mail app will open with
-                the details ready to send.
+                Send me a message and I&apos;ll get back to you soon.
               </p>
             </div>
 
