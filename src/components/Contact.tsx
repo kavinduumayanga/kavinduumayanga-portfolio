@@ -1,6 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Send, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, Send, Facebook, Instagram } from 'lucide-react';
+
+const XIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const CONTACT_EMAIL = 'kavinumayanga@gmail.com';
 
@@ -21,9 +27,19 @@ const SOCIAL_LINKS = [
     icon: Github
   },
   {
-    label: 'Twitter',
-    href: 'https://twitter.com/kavinduumayanga',
-    icon: Twitter
+    label: 'X',
+    href: 'https://x.com/kavinduumayanga',
+    icon: XIcon
+  },
+  {
+    label: 'Facebook',
+    href: 'https://facebook.com/kavinduumayanga',
+    icon: Facebook
+  },
+  {
+    label: 'Instagram',
+    href: 'https://instagram.com/kavinduumayanga',
+    icon: Instagram
   }
 ];
 
@@ -65,7 +81,7 @@ export function Contact() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="group flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] text-gray-400 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                    className="group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] text-gray-400 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                     aria-label={link.label}
                   >
                     <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
@@ -80,9 +96,9 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-panel rounded-[2rem] p-8 md:p-10 border border-white/5 bg-white/[0.02] backdrop-blur-md"
+            className="glass-panel rounded-3xl p-6 md:p-8 border border-white/5 bg-white/[0.02] backdrop-blur-md"
           >
-            <div className="mb-8 space-y-2">
+            <div className="mb-6 space-y-2">
               <h3 className="text-2xl font-heading font-bold text-white tracking-tight">
                 Send a Message
               </h3>
@@ -96,57 +112,57 @@ export function Contact() {
               action={`mailto:${CONTACT_EMAIL}`}
               method="post"
               encType="text/plain"
-              className="space-y-6"
+              className="space-y-4"
             >
-              <div className="grid gap-6 sm:grid-cols-2">
-                <label className="space-y-2.5">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="space-y-1.5">
                   <span className="text-sm font-medium text-gray-300">Name</span>
                   <input
                     type="text"
                     name="name"
                     placeholder="Your name"
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
                     required
                   />
                 </label>
 
-                <label className="space-y-2.5">
+                <label className="space-y-1.5">
                   <span className="text-sm font-medium text-gray-300">Email</span>
                   <input
                     type="email"
                     name="email"
                     placeholder="you@example.com"
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
                     required
                   />
                 </label>
               </div>
 
-              <label className="block space-y-2.5">
+              <label className="block space-y-1.5">
                 <span className="text-sm font-medium text-gray-300">Subject</span>
                 <input
                   type="text"
                   name="subject"
                   placeholder="What is this regarding?"
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+                  className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)]"
                   required
                 />
               </label>
 
-              <label className="block space-y-2.5">
+              <label className="block space-y-1.5">
                 <span className="text-sm font-medium text-gray-300">Message</span>
                 <textarea
                   name="message"
-                  rows={5}
+                  rows={4}
                   placeholder="Tell me a bit about your project, opportunity, or idea."
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)] resize-none"
+                  className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-white placeholder:text-gray-600 outline-none transition-all duration-300 focus:border-white/30 focus:bg-white/[0.05] focus:shadow-[0_0_15px_rgba(255,255,255,0.05)] resize-none"
                   required
                 />
               </label>
 
               <button
                 type="submit"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-white px-8 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] mt-2"
               >
                 Send Message
                 <Send className="h-4 w-4" />
